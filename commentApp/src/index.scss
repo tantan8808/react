@@ -1,0 +1,25 @@
+
+$background-color: hsla(240,0%,70%,.6);
+
+body{
+  background:$background-color;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+}
+.box-padding{
+  padding: 0 30px;
+}
+.comment-input-wrap{
+  width: 100%;
+  td{
+    padding: 10px 0;
+  }
+}
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+:export { backgroundColor: $background-color; }
