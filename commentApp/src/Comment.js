@@ -48,7 +48,7 @@ class Comment extends Component{
       this.setState({
         timer: setInterval(()=>{
           this._updateCreateTimer()
-        },10000)
+        },5000)
       })
   }
   componentWillUnmount() {
@@ -74,13 +74,15 @@ class Comment extends Component{
       this.props.handleSubmitDel(this.props.commentIndex);
     }
   }
-
+  _getProcessedContent(content){
+    return content.replace(/&/gm,'&amp;').replace(/</gm,'&alt;').replace(/>/gm,'&gt;').replace(/"/gm,'&quot;').replace(/'/gm,'&#039;').replace(/`([\S\s]+?)`/gm,'<code>$1</code>')
+  }
   render(){
     return(
       <div style={{clear: 'both',overflow: 'hidden',borderBottom: '1px solid #e5e5e5',marginTop: '20px'}} onMouseOver={this.handleMouseOver.bind(this)} onMouseOut={this.handleMouseOut.bind(this)}>
         <p className='float-left'>
           <span style={{color: 'darkblue'}}>{this.props.comment.username}:</span>
-          <span style={{marginLeft: '20px'}}>{this.props.comment.comment}</span>
+          <span style={{marginLeft: '20px'}} dangerouslySetInnerHTML={{__html: this._getProcessedContent(this.props.comment.comment)}} />
         </p>
         <p className='float-right'>
           <span>{this.state.createTimeStr}</span>
