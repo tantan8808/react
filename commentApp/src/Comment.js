@@ -28,7 +28,7 @@ class Comment extends Component{
     var nDate = new Date(this.props.comment.createTime);
     var durationTime = Math.floor((Date.now() - nDate)/1000);
     var createTimeStr = '';
-    console.log(nDate.toLocaleString(),durationTime)
+    
     if(durationTime<60)createTimeStr = '刚刚';
     else if(durationTime<3600)createTimeStr = Math.ceil(durationTime/60) + '分钟之前';
     else if(durationTime<86400)createTimeStr = Math.ceil(durationTime/3600) + '小时之前';
